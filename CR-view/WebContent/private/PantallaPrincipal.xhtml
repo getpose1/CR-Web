@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view 
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:cc="http://java.sun.com/jsf/composite"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>CR</title>
+</h:head>
+<h:form id="formTransaction" >
+<div class="ui-grid ui-grid-responsive">
+    <div class="ui-grid-row">
+			<div class="ui-grid-col-2.5">
+					<p:growl id="messages" showDetail="false" />
+					<p:menu toggleable="true">
+						<p:submenu label="Menú Principal">
+							<p:menuitem value="Leer Producto" 
+							    icon="ui-icon-disk" 
+								onclick="PF('popupSearchProductManual').show();" />
+						</p:submenu>
+					</p:menu>					
+			</div>
+			<div class="ui-grid-col-9.5" style="color: blue; ">
+			
+				<div class="ui-grid-row" style="color: red; background-color: #E8E8E8; height: 400px; overflow: auto; ">
+			        <p:dataTable var="listDetail" value="#{transactionRecord.transaction.listDetailsTransaction}" id="detailTransaction">
+					    <p:column headerText="Cod.Producto">
+					        <h:outputText value="#{listDetail.product.productId}" />
+					    </p:column>
+					 
+						<p:column headerText="Nombre">
+					        <h:outputText value="#{listDetail.product.name}" />
+					    </p:column>
+					    
+					    <p:column headerText="Descripción">
+					        <h:outputText value="#{listDetail.product.description}" />
+					    </p:column>
+					    					 
+					    <p:column headerText="Monto Base">
+					        <h:outputText value="#{listDetail.baseAmount}" />
+					    </p:column>
+					 
+					    <p:column headerText="Monto Desc.">
+					        <h:outputText value="#{listDetail.discountAmount}" />
+					    </p:column>
+					 
+					    <p:column headerText="Cantidad">
+					        <h:outputText value="#{listDetail.quantity}" />
+					    </p:column>
+					    <p:column headerText="Sub-Total">
+					        <h:outputText value="#{listDetail.subTotal}" />
+					    </p:column>
+					</p:dataTable>
+    			</div>
+    			
+
+    				<p:panelGrid id="totalTransaction" columns="4" layout="grid" style="color: red; background-color: #F0F0F0; height: 180px;" >            
+					    <h:outputText value="Total:" /> 
+					    <h:outputText value="#{transactionRecord.transaction.totalAmount}"  /> 
+					</p:panelGrid>
+
+			</div>		
+    </div>
+</div>
+
+ <!-- POPUP Incluir Producto Manual -->
+<p:dialog id="dialogSearchProductManual"
+	header="Ingresar Producto"
+	widgetVar="popupSearchProductManual" closeOnEscape="false" modal="true"
+	resizable="false" height="100">
+	<p:panelGrid columns="2">
+
+		<h:outputLabel for="code" value="Código del Producto:" />
+        <p:inputText id="code" value="#{transactionRecord.product.productId}" />
+		<p:commandButton
+			value="Buscar Producto:"
+			
+			actionListener="#{transactionRecord.searchProduct}"
+			oncomplete="PF('popupSearchProductManual').hide();"
+			update=":formTransaction:detailTransaction :formTransaction:totalTransaction" />
+
+	</p:panelGrid>
+</p:dialog>
+
+ </h:form>  
+		 
+</f:view>

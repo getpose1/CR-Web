@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view  
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:cc="http://java.sun.com/jsf/composite"
+	  xmlns:h="http://java.sun.com/jsf/html"
+>
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</h:head>
+
+<p:menubar style="background:lavender;color:white;margin-top:25px;padding-right:50px;width:1000px" autoDisplay="true">
+	
+	<p:submenu label="solicitud" url="#" icon="ui-icon-print">       
+            <p:menuitem value="Nueva" url="/private/nuevaSolicitud.jsf" icon="ui-icon-document" ajax="false"/>
+    </p:submenu>
+ 
+</p:menubar>
+
+<h:form id="display">
+    <h:panelGrid columns="4" cellpadding="5">
+    <h:outputLabel for="nombre" value="nombre:" style="font-weight:bold" />
+        <p:inputText id="nombre" value="#{prueba.pruebaNombre.nombre}" />
+        <h:outputLabel for="apellido" value="apellido:" style="font-weight:bold" />
+        <p:inputText id="apellido" value="#{prueba.pruebaNombre.apellido}" />
+        <h:outputLabel for="identificacion" value="identificacion:" style="font-weight:bold" />
+        <p:inputText id="identificacion" value="#{prueba.pruebaNombre.identificacion}" />
+        <p:commandButton value="Submit" update="display" icon="ui-icon-check" actionListener="#{prueba.registrar}" />
+
+    </h:panelGrid>
+    
+     
+    
+</h:form>
+
+</f:view>

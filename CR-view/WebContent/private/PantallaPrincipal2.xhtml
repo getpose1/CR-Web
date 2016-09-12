@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view 
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:cc="http://java.sun.com/jsf/composite"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>CR</title>
+</h:head>
+<h:form id="formTransaction" >
+
+<p:layout fullPage="true">
+	<p:layoutUnit position="north" size="50">
+        <h:outputText value="Aqui va todo la informacion de la CR, Logo, Usuario, Numero de Caja, Tienda, etc" />
+    </p:layoutUnit>
+    <p:layoutUnit position="center" resizable="true">
+        <p:dataTable var="listDetail" value="#{transactionRecord.transaction.listDetailsTransaction}" id="detailTransaction"
+        			 style="font-size: 10.0pt; text-align: right;">
+		    <p:column headerText="Cod.Producto">
+		        <h:outputText value="#{listDetail.product.productId}" />
+		    </p:column>
+		    
+		    <p:column headerText="Descripción" style="width:300px;">
+		        <h:outputText value="#{listDetail.product.description}" />
+		    </p:column>
+		    
+		    <p:column headerText="Cantidad">
+		        <h:outputText value="#{listDetail.quantity}" />
+		    </p:column>
+		    					 
+		    <p:column headerText="Monto Base">
+		        <h:outputText value="#{listDetail.baseAmount}" />
+		    </p:column>
+		 
+		    <p:column headerText="Monto Desc.">
+		        <h:outputText value="#{listDetail.discountAmount}" />
+		    </p:column>
+		 
+		    <p:column headerText="Sub-Total">
+		        <h:outputText value="#{listDetail.subTotal}" />
+		    </p:column>
+		</p:dataTable>
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="east"  size="320">
+    
+	    <p:tabView style="border-style: none; font-size: 7.9pt;">
+	        <p:tab title="Registrar Cliente">
+	            <h:panelGrid columns="1" cellpadding="5">
+	                <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+	                <h:outputText
+	                    value="The story begins as Don Vito Corleone..." />
+	            </h:panelGrid>
+	        </p:tab>
+	        <p:tab title="Consultas">
+	            <p:panelGrid columns="2">
+					<h:outputLabel for="code" value="Código del Producto:" />
+			        <p:inputText id="code" value="#{transactionRecord.product.productId}" />
+					<p:commandButton
+						value="Buscar Producto:"
+						actionListener="#{transactionRecord.searchProduct}"
+						update= ":formTransaction:detailTransaction :formTransaction:totalTransaction"/>
+				</p:panelGrid>
+	        </p:tab>
+	        <p:tab title="Cliente en Espera">
+	            <h:panelGrid columns="1" cellpadding="5">
+	                <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
+	                <h:outputText value="After a break of more than 15 years..." />
+	            </h:panelGrid>
+	        </p:tab>
+	    </p:tabView>
+    </p:layoutUnit>
+    <p:layoutUnit position="south" size="150">
+    
+    
+       <p:panelGrid columns="3">
+		 	 <p:panel  style="width: 600px; border: none;">
+		 	 <h:outputText value="Aqui va cualquier otra opcion que se necesite, principalmente completar la transaccion"  /> 
+      		 </p:panel>
+      		 <p:panel style="width: 380px; border: none; text-align: right;">
+      		 	<p:panelGrid columns="2" layout="grid" id="totalTransaction">
+      		 		<h:outputText value="SubTotal:"  /> 
+					<h:outputText value="#{transactionRecord.transaction.subTotalAmount}"  /> 
+      		 		<h:outputText value="Impuesto:" /> 
+					<h:outputText value="#{transactionRecord.transaction.taxAmount}"  /> 
+					<h:outputText value="Total a Pagar:" /> 
+					<h:outputText value="#{transactionRecord.transaction.totalAmount}"  /> 
+      		 	</p:panelGrid>
+      		 </p:panel>
+      		 <p:panel style="width: 280px; border: none;">
+      		 	<h:outputText value="Aqui va las formas de pago canceladas en la transaccion"  /> 
+      		 </p:panel>
+       </p:panelGrid>
+       
+      
+    </p:layoutUnit>
+</p:layout>
+
+ </h:form>  
+		 
+</f:view>
