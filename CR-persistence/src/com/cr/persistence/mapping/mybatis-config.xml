@@ -5,12 +5,9 @@
 	<environments default="develoment">
 		<environment id="develoment">
 			<transactionManager type="JDBC"/>		
-			<dataSource type="POOLED">
-				<property name="driver" value="com.mysql.jdbc.Driver"/>
-				<property name="url" value="jdbc:mysql://localhost:3306/CR"/>
-				<property name="username" value="CR"/>
-				<property name="password" value="cr123"/>
-			</dataSource>
+       		<dataSource type="JNDI">
+           		<property name="data_source" value="ds/cr" />
+       		</dataSource>
 		</environment>
 	</environments>
 	
