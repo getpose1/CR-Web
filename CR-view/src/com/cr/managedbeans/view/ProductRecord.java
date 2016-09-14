@@ -8,13 +8,13 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import com.cr.domain.Products;
-import com.cr.ejb.services.PruebaEjb;
+import com.cr.ejb.services.ProductServEJB;
 
 /**
  * Manager Bean
  * **/
 
-public class Prueba implements Serializable{
+public class ProductRecord implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -22,7 +22,7 @@ public class Prueba implements Serializable{
 	private List<Products> products; 
 	
 	@EJB
-	private PruebaEjb pruebaEjb;
+	private ProductServEJB productServEJB;
 	
 	@PostConstruct
 	public void init(){
@@ -54,7 +54,7 @@ public class Prueba implements Serializable{
 		try {
 			System.out.println("Producto como Input:" + getProduct().getProductId());
 			productCode = String.format("%012d", Integer.parseInt(product.getProductId()));
-			productResponse  = pruebaEjb.pruebaEJB(productCode);
+			productResponse  = productServEJB.productSelect(productCode);
 			if(productResponse != null)
 				products.add(productResponse);
 		} catch (Exception e) {

@@ -6,14 +6,14 @@ import javax.ejb.EJB;
 import com.cr.domain.DetailsTransaction;
 import com.cr.domain.Products;
 import com.cr.domain.Transactions;
-import com.cr.ejb.services.PruebaEjb;
+import com.cr.ejb.services.ProductServEJB;
 
 public class TransactionRecord {
 	
 	private Transactions transaction;
 	private Products product;
 	@EJB
-	private PruebaEjb pruebaEjb;
+	private ProductServEJB productServEJB;
 	
 	@PostConstruct
 	public void init(){
@@ -37,14 +37,6 @@ public class TransactionRecord {
 		this.product = product;
 	}
 
-	public PruebaEjb getPruebaEjb() {
-		return pruebaEjb;
-	}
-
-	public void setPruebaEjb(PruebaEjb pruebaEjb) {
-		this.pruebaEjb = pruebaEjb;
-	}
-
 	public void searchProduct(){
 		
 		Products productResponse;
@@ -58,7 +50,7 @@ public class TransactionRecord {
 				//Verificamos si el producto ya se incluido en los detalles para no ir a buscarlo a la BD
 				boolean exist = checkForProduct(productCode);
 				if(!exist){
-					productResponse  = pruebaEjb.pruebaEJB(productCode);
+					productResponse  = productServEJB.productSelect(productCode);
 					includeDetail(productResponse, 1);
 				}
 		//	}

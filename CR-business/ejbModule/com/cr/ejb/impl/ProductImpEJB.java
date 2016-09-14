@@ -3,14 +3,14 @@ package com.cr.ejb.impl;
 import javax.ejb.Stateless;
 
 import com.cr.domain.Products;
-import com.cr.ejb.services.PruebaEjb;
+import com.cr.ejb.services.ProductServEJB;
 import com.cr.persistence.impl.ProductsMapperImpl;
 
 @Stateless
-public class PruebaEJB implements PruebaEjb {
+public class ProductImpEJB implements ProductServEJB {
 
 	@Override
-	public Products pruebaEJB(String productCode) throws Exception {
+	public Products productSelect(String productCode) throws Exception {
 		
 		ProductsMapperImpl productImpl = new ProductsMapperImpl();
 		

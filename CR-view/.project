@@ -3,9 +3,6 @@
 	<name>CR-view</name>
 	<comment></comment>
 	<projects>
-		<project>CR-domain</project>
-		<project>CR-business</project>
-		<project>CR-persistence</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
