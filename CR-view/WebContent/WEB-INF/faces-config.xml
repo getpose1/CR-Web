@@ -5,23 +5,4 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 
-	<managed-bean>
-		<managed-bean-name>transactionRecord</managed-bean-name>
-		<managed-bean-class>com.cr.managedbeans.view.TransactionRecord</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>
-	
-	<managed-bean>
-		<managed-bean-name>transactionRecordRequest</managed-bean-name>
-		<managed-bean-class>com.cr.managedbeans.request.TransactionRecordRequest</managed-bean-class>
-		<managed-bean-scope>view</managed-bean-scope>
-	</managed-bean>
-    
-    <managed-bean>
-		<managed-bean-name>productRecord</managed-bean-name>
-		<managed-bean-class>com.cr.managedbeans.view.ProductRecord</managed-bean-class>
-		<managed-bean-scope>view</managed-bean-scope>
-	</managed-bean>
-
-
 </faces-config>

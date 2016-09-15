@@ -6,6 +6,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 
 import com.cr.domain.Products;
 import com.cr.ejb.services.ProductServEJB;
@@ -14,6 +17,8 @@ import com.cr.ejb.services.ProductServEJB;
  * Manager Bean
  * **/
 
+@ManagedBean(name = "ProductRecord")
+@ViewScoped
 public class ProductRecord implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -23,6 +28,18 @@ public class ProductRecord implements Serializable{
 	
 	@EJB
 	private ProductServEJB productServEJB;
+	
+	@ManagedProperty(value = "#{transactionRecord}")
+	private TransactionRecord transactionRecord;
+
+	
+	public TransactionRecord getTransactionRecord() {
+		return transactionRecord;
+	}
+
+	public void setTransactionRecord(TransactionRecord transactionRecord) {
+		this.transactionRecord = transactionRecord;
+	}
 	
 	@PostConstruct
 	public void init(){
@@ -49,18 +66,12 @@ public class ProductRecord implements Serializable{
 
 	public void registrar(){
 		
-		Products productResponse;
-		String productCode = null;
-		try {
-			System.out.println("Producto como Input:" + getProduct().getProductId());
-			productCode = String.format("%012d", Integer.parseInt(product.getProductId()));
-			productResponse  = productServEJB.productSelect(productCode);
-			if(productResponse != null)
-				products.add(productResponse);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for(int i = 0; i < 5 ; i++){
+			System.out.println("Holaaaaa");
 		}
+		
+		System.out.println(transactionRecord.getTransaction().getListDetailsTransaction().get(0).getProduct().getProductId());
+		
 		
 	}
 

@@ -1,14 +1,23 @@
 package com.cr.managedbeans.view;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
 
 import com.cr.domain.DetailsTransaction;
 import com.cr.domain.Products;
 import com.cr.domain.Transactions;
 import com.cr.ejb.services.ProductServEJB;
 
-public class TransactionRecord {
+@ManagedBean
+@ApplicationScoped
+public class TransactionRecord implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private Transactions transaction;
 	private Products product;
