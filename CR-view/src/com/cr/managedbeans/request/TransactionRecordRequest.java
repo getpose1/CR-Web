@@ -3,19 +3,19 @@ package com.cr.managedbeans.request;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.cr.managedbeans.view.TransactionRecord;
 
-@ManagedBean
-@ViewScoped
+@Named
+@RequestScoped
 public class TransactionRecordRequest implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ManagedProperty(value = "#{transactionRecord}")
+	@Inject
 	private TransactionRecord transactionRecord;
 
 	
@@ -33,11 +33,9 @@ public class TransactionRecordRequest implements Serializable {
 	public void savedTransaction(){
 		
 		for(int i = 0; i < 5 ; i++){
-			System.out.println("Holaaaaa");
+			System.out.println(getTransactionRecord().getTransaction().getListDetailsTransaction().get(i).getProduct().getProductId());
 		}
-		
-		System.out.println(transactionRecord.getTransaction().getListDetailsTransaction().get(0).getProduct().getProductId());
-		
+	
 	}
 	
 }

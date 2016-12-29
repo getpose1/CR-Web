@@ -9,6 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Production</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
+  	<param-value>true</param-value>
+  </context-param>
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -16,7 +24,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.xhtml</url-pattern>
+    <url-pattern>/wdCR/*</url-pattern>
   </servlet-mapping>
   <context-param>
     <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
@@ -30,4 +38,19 @@
   <listener>
     <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
   </listener>
+  
+  <!-- begin segurity config -->
+  <security-constraint>
+    <display-name>Public Site</display-name>
+    <web-resource-collection>
+      <web-resource-name>PublicResources</web-resource-name>
+      <url-pattern>/login.jsf</url-pattern>
+      <url-pattern>/loginError.jsf</url-pattern>
+      <url-pattern>/index.jsf</url-pattern>
+      <url-pattern>/public/*</url-pattern>
+      <url-pattern>/private/*</url-pattern>
+      <http-method>POST</http-method>
+      <http-method>GET</http-method>
+    </web-resource-collection>
+  </security-constraint>
 </web-app>

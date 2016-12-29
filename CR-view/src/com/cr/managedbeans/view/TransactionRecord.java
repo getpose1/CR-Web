@@ -4,17 +4,18 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 import com.cr.domain.DetailsTransaction;
 import com.cr.domain.Products;
 import com.cr.domain.Transactions;
 import com.cr.ejb.services.ProductServEJB;
 
-@ManagedBean
-@ApplicationScoped
+
+
+@Named
+@SessionScoped
 public class TransactionRecord implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
