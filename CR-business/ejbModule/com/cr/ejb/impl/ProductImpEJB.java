@@ -14,9 +14,9 @@ public class ProductImpEJB implements ProductServEJB {
 		
 		ProductsMapperImpl productImpl = new ProductsMapperImpl();
 		
-		Products prueba1 = productImpl.selectByPrimaryKey(productCode);
+		Products products = productImpl.selectByPrimaryKey(productCode);
 		
-		return prueba1;
+		return products;
 		
 	}
 

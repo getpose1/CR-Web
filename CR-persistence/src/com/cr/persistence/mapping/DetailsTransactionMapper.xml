@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.cr.domain.DetailsTransaction" >
     <id column="DETAIL_TRANSACTION_ID" property="detailTransactionId" jdbcType="INTEGER" />
     <result column="TRANSACTION_ID" property="transactionId" jdbcType="VARCHAR" />
-    <result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
+    <result column="PRODUCT_ID" property="product.productId" jdbcType="VARCHAR" />
     <result column="BASE_AMOUNT" property="baseAmount" jdbcType="DECIMAL" />
     <result column="DISCOUNT_AMOUNT" property="discountAmount" jdbcType="DECIMAL" />
     <result column="QUANTITY" property="quantity" jdbcType="INTEGER" />
@@ -40,7 +40,7 @@
       <if test="transactionId != null" >
         TRANSACTION_ID,
       </if>
-      <if test="productId != null" >
+      <if test="product.productId != null" >
         PRODUCT_ID,
       </if>
       <if test="baseAmount != null" >
@@ -60,8 +60,8 @@
       <if test="transactionId != null" >
         #{transactionId,jdbcType=VARCHAR},
       </if>
-      <if test="productId != null" >
-        #{productId,jdbcType=VARCHAR},
+      <if test="product.productId != null" >
+        #{product.productId,jdbcType=VARCHAR},
       </if>
       <if test="baseAmount != null" >
         #{baseAmount,jdbcType=DECIMAL},

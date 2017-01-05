@@ -5,8 +5,6 @@ public class DetailsTransaction {
 
     private String transactionId;
 
-    private String productId;
-
     private Long baseAmount;
 
     private Long discountAmount;
@@ -31,14 +29,6 @@ public class DetailsTransaction {
 
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
     }
 
     public Long getBaseAmount() {

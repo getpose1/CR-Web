@@ -3,6 +3,7 @@ package com.cr.persistence.services;
 import com.cr.domain.Transactions;
 
 public interface TransactionsMapper {
+	
     int deleteByPrimaryKey(String transactionId);
 
     int insert(Transactions record);
@@ -14,4 +15,6 @@ public interface TransactionsMapper {
     int updateByPrimaryKeySelective(Transactions record);
 
     int updateByPrimaryKey(Transactions record);
+    
+    void registerTransaction(Transactions record);
 }

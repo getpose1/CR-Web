@@ -30,14 +30,14 @@ public class ProductRecord implements Serializable{
 	private ProductServEJB productServEJB;
 	
 	@ManagedProperty(value = "#{transactionRecord}")
-	private TransactionRecord transactionRecord;
+	private TransactionRecordSessionMB transactionRecord;
 
 	
-	public TransactionRecord getTransactionRecord() {
+	public TransactionRecordSessionMB getTransactionRecord() {
 		return transactionRecord;
 	}
 
-	public void setTransactionRecord(TransactionRecord transactionRecord) {
+	public void setTransactionRecord(TransactionRecordSessionMB transactionRecord) {
 		this.transactionRecord = transactionRecord;
 	}
 	

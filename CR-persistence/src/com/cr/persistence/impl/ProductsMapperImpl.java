@@ -28,12 +28,11 @@ public class ProductsMapperImpl implements ProductsMapper {
 
 	@Override
 	public Products selectByPrimaryKey(String productId) {
-		SqlSession session = null;
 		Products product = null;
 		try{
 			
 			ProductsMapper productMapper;
-			session = new MyBatisUtil().getSession();
+			final SqlSession session = MyBatisUtil.getInstance().getSqlSession();
 			productMapper = session.getMapper(ProductsMapper.class);
 			product = productMapper.selectByPrimaryKey(productId);
 			
@@ -41,8 +40,7 @@ public class ProductsMapperImpl implements ProductsMapper {
 			System.out.println("Error en persistencia");
 			e.printStackTrace();
 		}finally {
-			if(session != null)
-				session.close();
+
 		} 
 		
 		return product;

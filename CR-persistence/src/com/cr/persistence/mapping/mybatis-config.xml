@@ -13,6 +13,8 @@
 	
 	<mappers>
 		<mapper resource="com/cr/persistence/mapping/ProductsMapper.xml" />
+		<mapper resource="com/cr/persistence/mapping/TransactionsMapper.xml" />
+		<mapper resource="com/cr/persistence/mapping/DetailsTransactionMapper.xml" />
 	</mappers>
 	
 </configuration>

@@ -19,7 +19,7 @@
         <h:outputText value="Aqui va todo la informacion de la CR, Logo, Usuario, Numero de Caja, Tienda, etc" />
     </p:layoutUnit>
     <p:layoutUnit position="center" resizable="true">
-        <p:dataTable var="listDetail" value="#{transactionRecord.transaction.listDetailsTransaction}" id="detailTransaction"
+        <p:dataTable var="listDetail" value="#{transactionRecordSessionMB.transaction.listDetailsTransaction}" id="detailTransaction"
         			 style="font-size: 10.0pt; text-align: right;">
 		    <p:column headerText="Cod.Producto">
 		        <h:outputText value="#{listDetail.product.productId}" />
@@ -60,10 +60,10 @@
 	        <p:tab title="Consultas">
 	            <p:panelGrid columns="2">
 					<h:outputLabel for="code" value="Código del Producto:" />
-			        <p:inputText id="code" value="#{transactionRecord.product.productId}" />
+			        <p:inputText id="code" value="#{transactionRecordSessionMB.product.productId}" />
 					<p:commandButton
 						value="Buscar Producto:"
-						actionListener="#{transactionRecord.searchProduct}"
+						actionListener="#{transactionRecordSessionMB.searchProduct}"
 						update= ":formTransaction:detailTransaction :formTransaction:totalTransaction"/>
 				</p:panelGrid>
 	        </p:tab>
@@ -91,18 +91,18 @@
       		 	<p:button value="btn6" id="totalizar6" />
       		 	<p:button value="btn7" id="totalizar7" />
       		 	<p:button value="btn8" id="totalizar8" />
-      		 	<p:commandButton value="Totalizar" id="totalizar9" process="@this" actionListener="#{transactionRecordRequest.savedTransaction}" />
+      		 	<p:commandButton value="Totalizar" id="totalizar9" process="@this" actionListener="#{transactionRecordRequestMB.savedTransaction}" />
       		 </p:panelGrid>
       		 </p:panel>
       		 
       		 <p:panel style="width: 300px; border: none; text-align: right;">
       		 	<p:panelGrid columns="2" layout="grid" id="totalTransaction">
       		 		<h:outputText value="SubTotal:"  /> 
-					<h:outputText value="#{transactionRecord.transaction.subTotalAmount}"  /> 
+					<h:outputText value="#{transactionRecordSessionMB.transaction.subTotalAmount}"  /> 
       		 		<h:outputText value="Impuesto:" /> 
-					<h:outputText value="#{transactionRecord.transaction.taxAmount}"  /> 
+					<h:outputText value="#{transactionRecordSessionMB.transaction.taxAmount}"  /> 
 					<h:outputText value="Total a Pagar:" /> 
-					<h:outputText value="#{transactionRecord.transaction.totalAmount}"  /> 
+					<h:outputText value="#{transactionRecordSessionMB.transaction.totalAmount}"  /> 
       		 	</p:panelGrid>
       		 </p:panel>
       		 

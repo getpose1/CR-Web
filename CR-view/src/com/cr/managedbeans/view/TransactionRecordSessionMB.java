@@ -3,8 +3,8 @@ package com.cr.managedbeans.view;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.cr.domain.DetailsTransaction;
@@ -13,16 +13,15 @@ import com.cr.domain.Transactions;
 import com.cr.ejb.services.ProductServEJB;
 
 
-
 @Named
 @SessionScoped
-public class TransactionRecord implements Serializable {
+public class TransactionRecordSessionMB implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private Transactions transaction;
 	private Products product;
-	@EJB
+	@Inject
 	private ProductServEJB productServEJB;
 	
 	@PostConstruct
